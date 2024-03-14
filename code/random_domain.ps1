@@ -10,7 +10,7 @@ $passwords = [System.Collections.ArrayList](Get-Content "data/passwords.txt")
 $groups = @()
 $users = @()
 
-
+<#
 $num_groups = 10 
 for ( $i = 0; $i -lt $num_groups; $i++){
 
@@ -19,8 +19,17 @@ for ( $i = 0; $i -lt $num_groups; $i++){
     $groups += $group
     $group_names.Remove($group_name)
 }
+#>
 
-$users = @()
+$num_groups = 10
+for ( $i = 0; $i -lt $num_groups; $i++ ){
+    $group_name = (Get-Random -InputObject $group_names)
+    $group = @{ "name" = "$group_name" }
+    $groups += $group
+    $group_names.Remove($group_name)
+}
+
+
 $num_users = 100 
 for ( $i = 0; $i -lt $num_users; $i++){
 
